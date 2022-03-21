@@ -12,6 +12,7 @@ import Wrapping from '../Wrapping'
 import Maintenance from '../Maintenance'
 
 import './styles.scss'
+import Filters from '../Filters'
 
 const PoolsList: FC<{}> = () => {
   const [ popupIsOpened, setPopupIsOpened ] = useState(false) 
@@ -103,7 +104,7 @@ const PoolsList: FC<{}> = () => {
         closePopup={closeMaintenance}
         component={<Maintenance pool={poolToMaintain}/>}
       />
-
+      <Filters/>
       {appStore.poolsByNetwork.map((pool) => {
         return <PoolListItem pool={pool} showPurchasedProducts={() => showPurchasedProducts(pool)} showMaintenance={() => showMaintenance(pool)} key={pool.poolAddress}/>
       })}

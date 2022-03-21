@@ -282,10 +282,11 @@ export const getPurchasedProducts = async (
   const batchAmount = Math.ceil((latestBlock - fromBlock) / blocksInBatch);
 
   for (let i of Array(batchAmount)) {
+    console.log(i);
     try {
       // Waiting time between requests
       await new Promise((resolve) => setTimeout(resolve, 1000));
-      console.log(i);
+
       // Get events
       await stakingContract
         ?.getPastEvents("LongPositionWrapper", { fromBlock, toBlock })
