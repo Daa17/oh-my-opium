@@ -264,12 +264,8 @@ const PoolsList: FC<Props> = (props: Props) => {
   function log() {
     console.log("val"); //eslint-disable-line
   }
-  console.log("pool", pool);
 
   const renderHeader = () => {
-    console.log("render", pool.poolAddress);
-    console.log("render", authStore.networkId);
-    console.log("ijiki", getScanLink(pool.poolAddress, authStore.networkId));
     return (
       <div className="pools-list-item-header-wrapper">
         <div className="pools-list-item-header-info">
@@ -464,7 +460,6 @@ const PoolsList: FC<Props> = (props: Props) => {
       </div>
     );
   };
-  console.log("{pool.poolAddress", pool.poolAddress);
   return (
     <CollapseContainer
       isOpened={collapseIsOpened}

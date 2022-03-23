@@ -1,6 +1,5 @@
 import { FC, useState } from "react";
 import { observer } from "mobx-react";
-// import { useAlert } from "react-alert";
 import { AuthType } from "@opiumteam/mobx-web3";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -8,10 +7,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import Divider from "@mui/material/Divider";
 import { Button, OpiumLink, ETheme } from "@opiumteam/react-opium-components";
 import authStore from "../../Services/Stores/AuthStore";
-// import appStore from "../../Services/Stores/AppStore";
 import { getScanLink } from "../../Services/Utils/transaction";
-// import { getPurchasedProductsTheGraph } from "../../Services/Utils/methods";
-// import { PositionType } from "../../Services/Utils/types";
 import { shortenAddress } from "../../Services/Utils/helpers";
 import MuiDropDown from "../DropDown";
 import { dropdownItems } from "./constants";
@@ -22,11 +18,7 @@ import "../../styles/main.scss";
 import "./styles.scss";
 import { MobileAuthMenu } from "./mobileAuthMenu";
 
-const Header: FC<{}> = () => {
-  // const [dropDownTitle, setDropDownTitle] = useState(dropdownItems[0].title);
-  // const [popupIsOpened, setPopupIsOpened] = useState(false);
-  // const [positions, setPositions] = useState<PositionType[]>([]);
-  // const [positionProductTitle, setPositionProductTitle] = useState<string>("");
+const Header: FC<any> = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
@@ -40,31 +32,11 @@ const Header: FC<{}> = () => {
   };
 
   const handleChangeNetworkList = (data: { title: string; value: number }) => {
-    // console.log(index);
-    // console.log(dropdownItems[+index]);
     authStore.changeNetwork(data?.title, data?.value);
   };
-  // const closePopup = () => {
-  //   setPopupIsOpened(false);
-  //   setPositionProductTitle("");
-  //   setPositions([]);
-  // };
-  // const handleMobileMenu = () => {
-  //   console.log('You clicked button.');
-  // }
 
   return (
     <div className="header-wrapper">
-      {/* <Popup
-        theme={ETheme.DARK}
-        titleSize="lg"
-        title="Purchased products"
-        subtitle={positionProductTitle}
-        className="positions-list-popup"
-        popupIsOpen={popupIsOpened}
-        closePopup={closePopup}
-        component={<PositionsList positions={positions} />}
-      /> */}
       <div className="header-title">Oh my Opium</div>
       {/* <Button 
           variant='primary' 
@@ -79,11 +51,9 @@ const Header: FC<{}> = () => {
       <div className="header-buttons-wrapper">
         <div className="dropdown-wrapper">
           <MuiDropDown
-            // title={shortenAddress(address)}
             data={dropdownItems}
             header="Network"
             handleNetworkList={handleChangeNetworkList}
-            // onSelect={(eventKey) => handleSelect(eventKey)}
           />
         </div>
         {authStore.loggedIn && authStore.blockchainStore.address && (

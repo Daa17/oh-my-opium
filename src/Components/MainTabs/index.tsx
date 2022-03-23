@@ -1,25 +1,45 @@
-import {Tabs } from '@opiumteam/react-opium-components'
-import React, { FC } from 'react'
-import PoolsList from '../PoolsList'
-// import PositionsList from '../PositionsList'
+import { FC, useState, SyntheticEvent } from "react";
+import { useNavigate, Outlet, Link } from "react-router-dom";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
 
-import './styles.scss'
+import "./styles.scss";
 
-const tabItems = [
-    {title: "pools", eventKey: "pools", content: <PoolsList/>},
-    {title: "positions", eventKey: "positions", content: <p>Positions</p>},
-    {title: "wOpium", eventKey: "wOpium", content: <p>wOpium</p>}
-]
-const MainTabs: FC<{}> = () => {
-    return (
-        <div className="main_tabs">
-           <Tabs
-                id= "main-tabs"
-                items={tabItems}
-                // defaultActiveKey="pools"
-           />
-        </div>
-    )
+interface ITabs {
+  tabs: ITabItem[];
 }
 
-export default MainTabs
+interface ITabItem {
+  label: string;
+  value: string;
+}
+
+const MainTabs: FC<ITabs> = ({ tabs }) => {
+  let navigate = useNavigate();
+
+  const [value, setValue] = useState<string>("");
+
+  const handleChange = (event: SyntheticEvent, newValue: string) => {
+    setValue(newValue);
+    navigate(`/eth/pools/${newValue}`);
+  };
+
+  return (
+    <div className="main_tabs">
+      <Tabs
+        value={value}
+        onChange={handleChange}
+        aria-label="basic tabs example"
+      >
+        {tabs?.map(({ label, value }) => (
+          <Link to={`${value}`}>
+            <Tab label={label} value={value}></Tab>
+          </Link>
+        ))}
+      </Tabs>
+      <Outlet />
+    </div>
+  );
+};
+
+export default MainTabs;
