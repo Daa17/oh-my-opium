@@ -3,6 +3,12 @@
     display: flex;
     align-items: center;
     padding: 1.71rem 4.5rem 1.14rem;
+    .filters_tab_wrapper {
+        .filter-tabs {
+            padding: 0 4.5rem;
+            background: #222234
+        }
+    }
     nav {
         padding: 0;
         .nav-link {
@@ -47,6 +53,7 @@
         display: none;
     }
 }
+
 .nav-tabs {
     .nav-item {
         &.active {
@@ -57,12 +64,12 @@
         }
     }
 }
+
 @media only screen and (max-width: 768px) {
     .main_tabs {
-        nav  {
+        nav {
             padding: 0 1.14rem;
         }
-      
     }
     .filters_wrapper {
         padding: 0 1.14rem;
@@ -89,6 +96,5 @@
         .dropdowns_container {
             display: none;
         }
-
     }
 }

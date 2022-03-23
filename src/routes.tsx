@@ -36,17 +36,17 @@ export const AppRouts = observer(() => {
               />
             </Route>
             <Route path="positions" element={<p>positions</p>} />
+            <Route path="wOpium" element={<p>wOpium</p>} />
+            <Route
+              path="*"
+              element={
+                <Navigate
+                  to={`/${currentNetworkShortName}/pools/all-pools`}
+                  replace
+                />
+              }
+            />
           </Route>
-
-          <Route
-            path="*"
-            element={
-              <Navigate
-                to={`/${currentNetworkShortName}/pools/all-pools`}
-                replace
-              />
-            }
-          />
         </Route>
       </Routes>
     </>

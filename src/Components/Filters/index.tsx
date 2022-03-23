@@ -43,6 +43,7 @@ const Filters: FC<IFilter> = ({ nestedPath }) => {
           value={value}
           onChange={handleChange}
           aria-label="basic tabs example"
+          className="filter-tabs"
         >
           <Tab label="All Pools" value="all-pools" />
           <Tab label="My Stake" value="my-stake" />
